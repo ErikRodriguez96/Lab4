@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ImageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,6 +14,9 @@ class ImageActivity : AppCompatActivity() {
 
         val imageView = findViewById<ImageView>(R.id.LargeCityImageView)
         val textView = findViewById<TextView>(R.id.CityTextView)
+
+        val recyclerView = findViewById<RecyclerView>(R.id.CityPicsRecyclerView)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
 
         val cityPics = arrayOf(
             ImageObject(R.drawable.amsterdam, "Amsterdam, NL"),
@@ -26,5 +31,12 @@ class ImageActivity : AppCompatActivity() {
             ImageObject(R.drawable.stockholm, "Stockholm, SE"),
             ImageObject(R.drawable.tokyo, "Tokyo, JP")
         )
+
+        val recyclerViewFunc = {imageObj : ImageObject ->
+            imageView.setImageResource(imageObj.resourceId)
+            textView.text = imageObj.description
+        }
+
+        recyclerView.adapter = ImageAdapter(cityPics, recyclerViewFunc)
     }
 }
