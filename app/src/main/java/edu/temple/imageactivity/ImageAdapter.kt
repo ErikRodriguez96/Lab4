@@ -3,27 +3,36 @@ package edu.temple.imageactivity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ImageAdapter(_images: Array<ImageObject>, _myRecyclerViewFunc: (ImageObject) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>(){
 
-    class ImageViewHolder(view: View) : RecyclerView.ViewHolder(view){
-        val textView : TextView
+    val cityPics = _images
+    val recyclerViewFunc = _myRecyclerViewFunc
+
+    inner class ImageViewHolder(_view: View) : RecyclerView.ViewHolder(_view){
+        val thumbnailImageView : ImageView = _view.findViewById<ImageView>(R.id.thumbnailImageView)
+
+        lateinit var imageObject: ImageObject
         init {
-            textView = view.findViewById(R.id.CityTextView)
+            _view.setOnClickListener{recyclerViewFunc(imageObject)}
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        TODO("Not yet implemented")
+        val layout = LayoutInflater.from(parent.context)
+            .inflate(R.layout.thumbnail_image_view_layout, parent, false)
+        return ImageViewHolder(layout)
     }
 
     override fun onBindViewHolder(holder: ImageAdapter.ImageViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.thumbnailImageView.setImageResource(cityPics[position].resourceId)
+        holder.imageObject = cityPics[position]
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return cityPics.size
     }
 }
