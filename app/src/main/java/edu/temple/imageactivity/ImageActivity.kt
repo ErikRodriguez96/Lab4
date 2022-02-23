@@ -1,9 +1,10 @@
 package edu.temple.imageactivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -12,11 +13,11 @@ class ImageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val imageView = findViewById<ImageView>(R.id.LargeCityImageView)
-        val textView = findViewById<TextView>(R.id.CityTextView)
+        val imageView = findViewById<ImageView>(R.id.largeImageView)
+        val textView = findViewById<TextView>(R.id.descTextView)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.CityPicsRecyclerView)
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
 
         val cityPics = arrayOf(
             ImageObject(R.drawable.amsterdam, "Amsterdam, NL"),
@@ -36,7 +37,8 @@ class ImageActivity : AppCompatActivity() {
             imageView.setImageResource(imageObj.resourceId)
             textView.text = imageObj.description
         }
-
+        recyclerView.layoutManager = GridLayoutManager(this, 4)
         recyclerView.adapter = ImageAdapter(cityPics, recyclerViewFunc)
+
     }
 }

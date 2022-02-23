@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ImageAdapter(_images: Array<ImageObject>, _myRecyclerViewFunc: (ImageObject) -> Unit) : RecyclerView.Adapter<ImageAdapter.ImageViewHolder>(){
@@ -13,7 +12,7 @@ class ImageAdapter(_images: Array<ImageObject>, _myRecyclerViewFunc: (ImageObjec
     val recyclerViewFunc = _myRecyclerViewFunc
 
     inner class ImageViewHolder(_view: View) : RecyclerView.ViewHolder(_view){
-        val thumbnailImageView : ImageView = _view.findViewById<ImageView>(R.id.thumbnailImageView)
+        val thumbnailImageView : ImageView = _view.findViewById<ImageView>(R.id.thumbnail_layout)
 
         lateinit var imageObject: ImageObject
         init {
