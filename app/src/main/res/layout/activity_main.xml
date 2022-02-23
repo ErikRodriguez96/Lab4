@@ -15,7 +15,7 @@
         android:layout_marginTop="35dp"
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="18dp"
-        android:text="Click an image!"
+        android:text="Tap on an image thumbnail below"
         app:layout_constraintBottom_toTopOf="@+id/largeImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +36,10 @@
 
     <ImageView
         android:id="@+id/largeImageView"
-        android:layout_width="207dp"
-        android:layout_height="134dp"
+        android:layout_width="252dp"
+        android:layout_height="170dp"
         android:layout_marginTop="18dp"
+        android:layout_marginBottom="38dp"
         android:contentDescription="TODO"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
